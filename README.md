@@ -18,3 +18,12 @@
 ```
     python todoapp.py
 ```
+
+### 4.The result of system as below: 
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font1.png)
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font2.png)
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font3.png)
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font4.png)
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font5.png)
+![image](https://github.com/sunguoy/Task_AB/blob/main/ResultImage/font6.png)
+
