@@ -41,10 +41,6 @@
 
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="task-form-display">Task</span>
-                    <input type="text" class="form-control" id="taskname" placeholder="Name of task" aria-label="task-name" aria-describedby="basic-addon1" >
-                </div>
-                <div class="input-group mb-3">
                     <span class="input-group-text" id="task-form-display2">Description</span>
                     <input type="text" class="form-control" id="description" placeholder="Description of task" aria-label="task-name" aria-describedby="basic-addon1" >
                 </div>
@@ -54,7 +50,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="task-form-display4">Priority</span>
-                    <input type="text" class="form-control" id="priority"  list="typelist" required/>
+                    <input type="text" class="form-control" id="priority"  placeholder="Low, Medium or High"  list="typelist" >
                     <datalist id="typelist" >
                         <option>Low</option>
                         <option>Medium</option>
@@ -77,8 +73,7 @@
         <table class="table" id="task_table">
             <thead>
             <tr>
-                <th class="todoid">#</th>
-                <th class="todotitle">Title</th>
+                <th class="todoid">No.</th>
                 <th class="tododescription">Description</th>
                 <th class="todoemail">Email</th>
                 <th class="todopriority">Priority</th>
@@ -89,14 +84,10 @@
             {% for todo in todo_list %}
                 <tr>
                     <td>{{todo.id }}</td>
-                    <td>{{ todo.title }}</td>
                     <td>{{ todo.description }}</td>
                     <td>{{ todo.email }}</td>
                     <td>{{ todo.priority }}</td>
                 </tr>
-<!--            <div class="ui segment">-->
-<!--                <p class="ui big header">{{todo.id }} | {{ todo.title }} | {{ todo.description }} | {{ todo.email }} | {{ todo.priority }}</p>-->
-<!--            </div>-->
             {% endfor %}
 
             </tbody>

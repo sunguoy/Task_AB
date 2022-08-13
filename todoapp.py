@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 app = Flask(__name__)
 
-# /// = relative path, //// = absolute path
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -11,11 +11,9 @@ db = SQLAlchemy(app)
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
     description = db.Column(db.String(100))
     email = db.Column(db.String(100))
     priority  = db.Column(db.String(6))
-    complete = db.Column(db.Boolean)
 
 @app.before_first_request
 def create_tables():
@@ -29,25 +27,22 @@ def home():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    import json
     data = request.data
     data = json.loads(data)
-    taskname = data.get("taskname")
+    id = data.get("id")
     description = data.get("description")
     email= data.get("email")
     priority = data.get("priority")
 
     with open('task.txt', 'a+') as f:
-        f.write(taskname)
-        f.write(" ")
         f.write(description)
-        f.write(" ")
+        f.write("        ")
         f.write(email)
-        f.write(" ")
+        f.write("        ")
         f.write(priority)
-        f.write(" \n")
+        f.write("        \n")
 
-    new_todo = Todo(title=taskname, description=description, email=email, priority=priority, complete=False)
+    new_todo = Todo( description=description, email=email, priority=priority)
     db.session.add(new_todo)
     db.session.commit()
     return redirect(url_for("home"))

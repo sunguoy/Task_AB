@@ -23,14 +23,10 @@ $(document).ready(function () {
 
 
     $('#submit-task').click(function () {
-        const taskname = $('#taskname').val();
         const description = $('#description').val();
         const email = $('#email').val();
         const priority = $('#priority').val();
-        if(taskname== ''){
-              alert('Please input the name of task!');
-              return false;
-          }
+
         if(description== ''){
               alert('Please input description!');
               return false;
@@ -50,13 +46,12 @@ $(document).ready(function () {
               alert('Please select correct priority');
               return false;
           }
-        console.log(taskname, description, email, priority)
+        console.log(description, email, priority);
         $.ajax({
             type: 'POST',
             url: '/submit',
             contentType: 'application/json;charset=UTF-8',
             data: JSON.stringify({
-                'taskname': taskname,
                 'description': description,
                 'email': email,
                 'priority': priority
@@ -81,35 +76,6 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 console.log(res.response)
-                location.reload();
-            },
-            error: function () {
-                console.log('Error');
-            }
-        });
-    });
-
-    $('.state').click(function () {
-        const state = $(this)
-        const tID = state.data('source')
-        const new_state = "Todo"
-        if (state.text() === "In Progress") {
-            new_state = "Complete"
-        } else if (state.text() === "Complete") {
-            new_state = "Todo"
-        } else if (state.text() === "Todo") {
-            new_state = "In Progress"
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: '/edit/' + tID,
-            contentType: 'application/json;charset=UTF-8',
-            data: JSON.stringify({
-                'status': new_state
-            }),
-            success: function (res) {
-                console.log(res)
                 location.reload();
             },
             error: function () {
