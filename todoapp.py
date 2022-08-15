@@ -1,3 +1,9 @@
+"""
+    Todo list application
+    Authour: Guoyou Sun
+    Mail: sunguoy@mail.ustc.edu.cn 
+"""
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import json
